@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    "williamboman/mason.nvim",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
@@ -102,6 +103,11 @@ return {
           },
         })
       end,
+      -- ["rust-analyzer"] = function()
+      --   lspconfig["rust-analyzer"].setup({
+      --     capabilities = capabilities,
+      --   })
+      -- end,
       ["clangd"] = function()
         lspconfig["clangd"].setup({
           capabilities = vim.tbl_extend("force", capabilities, {
@@ -112,11 +118,11 @@ return {
           },
           cmd = {
             "clangd",
+            "--function-arg-placeholders=0",
             "--background-index",
             "--clang-tidy",
             "--header-insertion=iwyu",
             "--completion-style=detailed",
-            "--function-arg-placeholders",
             "--fallback-style=llvm",
           },
           init_options = {

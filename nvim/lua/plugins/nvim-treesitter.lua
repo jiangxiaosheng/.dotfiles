@@ -38,6 +38,8 @@ return {
         "vimdoc",
         "c",
         "cpp",
+        "cmake",
+        "python",
       },
       incremental_selection = {
         enable = true,

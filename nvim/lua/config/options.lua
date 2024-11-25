@@ -37,3 +37,22 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- autosave
+local autosave_group = vim.api.nvim_create_augroup("autosave", { clear = true })
+
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'VimLeavePre' }, {
+    pattern = '*',
+    group = autosave_group,
+    callback = function(event)
+        if event.buftype == 'nofile' or event.file == '' then
+            return
+        end
+        vim.api.nvim_buf_call(event.buf, function()
+            vim.schedule(function()
+                vim.cmd 'silent! write'
+            end)
+        end)
+    end,
+})
+

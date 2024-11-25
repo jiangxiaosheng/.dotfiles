@@ -1,6 +1,6 @@
 return {
    'Mofiqul/vscode.nvim',
-
+   dependencies = "nvim-tree/nvim-web-devicons",
    -- optionally, override the default options:
     config = function()
       local c = require('vscode.colors').get_colors()
@@ -29,7 +29,7 @@ return {
            Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
         }
     })
-   require('vscode').load()
+    vim.cmd.colorscheme "vscode"
    end,
 }
 

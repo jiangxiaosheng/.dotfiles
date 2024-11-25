@@ -27,7 +27,11 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-	      "clangd", -- C/C++
+        "lua_ls",
+        "pyright",
+        "clangd",
+        "rust_analyzer",
+        "cmake",
       },
     })
 
