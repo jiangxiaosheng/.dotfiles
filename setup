@@ -7,3 +7,4 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
 sudo update-alternatives --install /usr/bin/vim vim /opt/nvim-linux64/bin/nvim 100
 
+sudo apt install -y python3-venv ripgrep clang-format
